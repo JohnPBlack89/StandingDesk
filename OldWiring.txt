@@ -1,0 +1,16 @@
+***************************************************************************
+* This is the wiring for the standing desk WITHOUT the gyroscope attached *
+***************************************************************************
+
+Relay Board:
+************
+Green & Blue x4 (Relay to Leg Motors) - Connect Middle Relay Output to Leg Motor
+Purple & Grey x4 (Arduino to Relay Controls) - Connect IN1 - IN8 On Relay Input to 8 & 9 On Arduino Digital 
+Red & Black (Relay Controller Power) - Connect Relay Controller VCC & GNDC to 5V & GND on Arduino Power
+Yellow & White (Relay Switch) - Connect to 12V Power & GND
+
+Arduino Board:
+**************
+Red & Black (12V IN) - Plugs 12V AC Current into 12 V Plug on Arduino
+Orange & Brown (Originally Yellow) - Connects Arduino to Buttons, then to 10K Resistor, then to Ground
+
