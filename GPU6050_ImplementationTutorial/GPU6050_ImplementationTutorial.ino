@@ -1,7 +1,7 @@
 // Wiring for this sketch:
 // Arduino  ->     MPU
 // *******       *******
-//  Power          VCC
+//    5V           VCC
 //   GND           GND
 //    A4           SCL
 //    A5           SDA
@@ -9,12 +9,13 @@
 
 
 // The Wire.h library is used for the I2C communication
-#include<Wire.h>
+#include <Wire.h>
+
 // While GPU6050 Libraries exist, they were not used to
 // demonstrate how to access the registers on thier own
 
 // Raw acceleration data read from the MPU
-long accelx, accely, accelz;
+long accelX, accelY, accelZ;
 // Creating floats used to calculate g-forces
 float gForceX, gForceY, gForceZ;
 
@@ -25,16 +26,17 @@ float rotX, rotY, rotZ;
 
 void setup() {
   // Serial.begin used for troubleshooting data:
-  Serial.begin(9600)
-  Wire.begin;
+  Serial.begin(9600);
+  Wire.begin();
   setupMPU();
 }
 
 void loop() {
   recordAccelRegisters();
   recordGyroRegisters();
-  printData()
+  printData();
   delay(100);
+  Serial.println("Hello");
 }
 
 // The purpose of the setupMPU() function is two-fold:
@@ -69,10 +71,10 @@ void recordAccelRegisters(){
   Wire.endTransmission();
   
   Wire.requestFrom(0b1101000,6); // Request Accel Registers (3B - 40)
-  while(Wire.available < 6);
-  accelX = Wire.read()<<8|Wire.read(); Store first two bytes into
-  accelY = Wire.read()<<8|Wire.read(); Store middle two bytes into
-  accelZ = Wire.read()<<8|Wire.read(); Store last two bytes into
+  while(Wire.available() < 6);
+  accelX = Wire.read()<<8|Wire.read();
+  accelY = Wire.read()<<8|Wire.read();
+  accelZ = Wire.read()<<8|Wire.read();
 
   processAccelData();
 }
@@ -91,10 +93,10 @@ void recordGyroRegisters(){
   Wire.endTransmission();
   
   Wire.requestFrom(0b1101000,6); // Request Accel Registers (3B - 40)
-  while(Wire.available < 6);
-  gyroX = Wire.read()<<8|Wire.read(); Store first two bytes into
-  gyroY = Wire.read()<<8|Wire.read(); Store middle two bytes into
-  gyroZ = Wire.read()<<8|Wire.read(); Store last two bytes into
+  while(Wire.available() < 6);
+  gyroX = Wire.read()<<8|Wire.read();
+  gyroY = Wire.read()<<8|Wire.read();
+  gyroZ = Wire.read()<<8|Wire.read(); 
 
   processGyroData();
 }
@@ -109,11 +111,11 @@ void processGyroData() {
 void printData(){
   Serial.print("Gyro (deg)");
   Serial.print(" X=");
-  Serial.print(rotX);
+  Serial.print(gyroX);
   Serial.print(" Y=");
-  Serial.print(rotY);
+  Serial.print(gyroY);
   Serial.print(" Z=");
-  Serial.print(rotZ);
+  Serial.print(gyroZ);
   Serial.print(" Accel(g)");
   Serial.print(" X=");
   Serial.print(gForceX);
