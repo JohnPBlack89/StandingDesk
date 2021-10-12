@@ -1,17 +1,13 @@
-/**************************
- * 
- * This commit is for testing the
- * buttons and relays ONLY, there is
- * no gyroscope implementation yet
- * 
- ****************************/
+/***************************************************************************************************
+ * This commit is for testing the buttons and relays ONLY, there is no gyroscope implementation yet
+ ***************************************************************************************************/
 
 #include "Arduino.h"
 #include "Wire.h"
 
 // Declaring Buttons Pins:
-const int UP_BUTTON = 12;
-const int DOWN_BUTTON = 13;
+const int UP_BUTTON = 13;
+const int DOWN_BUTTON = 12;
 
 // Declaring Button States:
 int upButtonState = 0;
@@ -53,29 +49,33 @@ void loop() {
     // Up Functionality
     upButtonState = digitalRead(UP_BUTTON);
     downButtonState = digitalRead(DOWN_BUTTON);
+    
     if (upButtonState == HIGH && downButtonState == LOW) {
         // Up
         digitalWrite(FRONT_LEFT_UP, LOW);
         digitalWrite(FRONT_RIGHT_UP, LOW);
         digitalWrite(BACK_LEFT_UP, LOW);
         digitalWrite(BACK_RIGHT_UP, LOW);
+        digitalWrite(FRONT_LEFT_DOWN, HIGH);
+        digitalWrite(FRONT_RIGHT_DOWN, HIGH);
+        digitalWrite(BACK_LEFT_DOWN, HIGH);
+        digitalWrite(BACK_RIGHT_DOWN, HIGH);
 
     } else if (upButtonState == LOW && downButtonState == HIGH) {
         //  Down
+        digitalWrite(FRONT_LEFT_UP, HIGH);
+        digitalWrite(FRONT_RIGHT_UP, HIGH);
+        digitalWrite(BACK_LEFT_UP, HIGH);
+        digitalWrite(BACK_RIGHT_UP, HIGH);
         digitalWrite(FRONT_LEFT_DOWN, LOW);
         digitalWrite(FRONT_RIGHT_DOWN, LOW);
         digitalWrite(BACK_LEFT_DOWN, LOW);
         digitalWrite(BACK_RIGHT_DOWN, LOW);
-    } else if (upButtonState == HIGH && downButtonState == HIGH) {
+        
+    } else if (upButtonState == LOW && downButtonState == LOW) {
         // Level
-        digitalWrite(FRONT_LEFT_UP, LOW);
-        digitalWrite(FRONT_RIGHT_UP, LOW);
-        digitalWrite(BACK_LEFT_UP, LOW);
-        digitalWrite(BACK_RIGHT_UP, LOW);
-        digitalWrite(FRONT_LEFT_DOWN, LOW);
-        digitalWrite(FRONT_RIGHT_DOWN, LOW);
-        digitalWrite(BACK_LEFT_DOWN, LOW);
-        digitalWrite(BACK_RIGHT_DOWN, LOW);
+        
+        
     } else {
         // Stop 
         digitalWrite(FRONT_LEFT_UP, HIGH);

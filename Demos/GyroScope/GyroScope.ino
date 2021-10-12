@@ -1,8 +1,8 @@
 
 /**** Gyroscope ****/
 // Updates should (hopefully) always be available at https://github.com/jrowberg/i2cdevlib
-I2Cdev device library code is placed under the MIT license
-Copyright (c) 2012 Jeff Rowberg
+// I2Cdev device library code is placed under the MIT license
+// Copyright (c) 2012 Jeff Rowberg
 // I2Cdev and MPU6050 must be installed as libraries, or else the .cpp/.h files
 // for both classes must be in the include path of your project
 #include "I2Cdev.h"
@@ -27,7 +27,6 @@ MPU6050 mpu;
    external interrupt #0 pin. On the Arduino Uno and Mega 2560, this is
    digital I/O pin 2.
  * ========================================================================= */
-/*
 
 // uncomment "OUTPUT_READABLE_QUATERNION" if you want to see the actual
 // quaternion components in a [w, x, y, z] format (not best for parsing
@@ -106,7 +105,7 @@ void dmpDataReady() {
 // ================================================================
 // ===                      INITIAL SETUP                       ===
 // ================================================================
-/*
+
 void setup() {
     // join I2C bus (I2Cdev library doesn't do this automatically)
     #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
@@ -195,7 +194,7 @@ void setup() {
 // ================================================================
 // ===                    MAIN PROGRAM LOOP                     ===
 // ================================================================
-/*
+
 void loop() {
     // if programming failed, don't try to do anything
     if (!dmpReady) return;
@@ -287,4 +286,4 @@ void loop() {
         blinkState = !blinkState;
         digitalWrite(LED_PIN, blinkState);
     }
-} */
+}
