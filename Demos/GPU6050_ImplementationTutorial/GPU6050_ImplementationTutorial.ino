@@ -36,7 +36,6 @@ void loop() {
   recordGyroRegisters();
   printData();
   delay(100);
-  Serial.println("Hello");
 }
 
 // The purpose of the setupMPU() function is two-fold:
