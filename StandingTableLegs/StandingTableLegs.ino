@@ -3,16 +3,29 @@
  ***************************************************************************************************/
 
 /* Relay Board:
-*****************
-Green & Blue x4 (Relay to Leg Motors) - Connect Middle Relay Output to Leg Motor
-Purple & Grey x4 (Arduino to Relay Controls) - Connect IN1 - IN8 On Relay Input to 8 & 9 On Arduino Digital 
-Red & Black (Relay Controller Power) - Connect Relay Controller VCC & GNDC to 5V & GND on Arduino Power
-Yellow & White (Relay Switch) - Connect to 12V Power & GND
+****************
+Blue(x4) - Up Relay/Up Leg
+Green(x4) - Down Relay/Down Leg
+Purple(x4) - Up Relay Controller Input/Up Pin
+Grey(x4) - Down Relay Controller Input/Down Pin
+Red - VCC/5V
+Black - GND/Ground
+Yellow(x4) - 12V/Input of Relay
+White(x4) - Grount/Output of Relay
 
-Arduino Board:
-**************
-Red & Black (12V IN) - Plugs 12V AC Current into 12 V Plug on Arduino
-Orange & Brown (Originally Yellow) - Connects Arduino to Buttons, then to 10K Resistor, then to Ground
+Buttons:
+********
+Orange - 13/Up
+Brown - 12/Down
+Red(x2) - 5V/10k Resistor/Button(Same Side as Pin)
+Black(x2) - Ground/Button(Opposite Side as Pin)
+
+MPU 6050 Board:
+***************
+Red - VCC/3.3V
+Black - GND/Ground
+Brown - SCL/A5
+Green - SDA/A4
 */
  
 #include "I2Cdev.h"
