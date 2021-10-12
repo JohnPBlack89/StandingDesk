@@ -110,16 +110,16 @@ void processGyroData() {
 void printData(){
   Serial.print("Gyro (deg)");
   Serial.print(" X=");
-  Serial.print(gyroX);
+  Serial.print(rotX);
   Serial.print(" Y=");
-  Serial.print(gyroY);
+  Serial.print(rotY);
   Serial.print(" Z=");
-  Serial.print(gyroZ);
+  Serial.print(rotZ);
   Serial.print(" Accel(g)");
   Serial.print(" X=");
   Serial.print(gForceX);
   Serial.print(" Y=");
   Serial.print(gForceY);
   Serial.print(" Z=");
-  Serial.print(gForceZ);
+  Serial.println(gForceZ);
 }
