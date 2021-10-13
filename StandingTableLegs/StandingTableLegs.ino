@@ -81,7 +81,7 @@ int frontLeft = 0;
 int backLeft = 0;
 int backRight = 0;
 int frontRight = 0;
-int legTolerance = 20;
+int legTolerance = 10;
 
 void setup() {
   // join I2C bus (I2Cdev library doesn't do this automatically)
@@ -145,8 +145,8 @@ void loop() {
         processGyroData();
         frontLeft = rotX + rotY;
         backLeft = rotX - rotY;
-        backRight = -rotX + rotY;
-        frontRight = -rotX - rotY;
+        backRight = -(rotX) - rotY;
+        frontRight = -(rotX) + rotY;
 
         Serial.print("frontLeft: " + frontLeft );
         Serial.print("backLeft: " + backLeft);
