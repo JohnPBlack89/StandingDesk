@@ -1,13 +1,10 @@
-/***************************************************************************************************
- * This commit is for testing the buttons and relays ONLY, there is no gyroscope implementation yet
- ***************************************************************************************************/
-
-/* Relay Board:
+  /* 
+Relay Board:
 ****************
 Blue(x4) - Up Relay/Up Leg
 Green(x4) - Down Relay/Down Leg
-Purple(x4) - Up Relay Controller Input/Up Pin
-Grey(x4) - Down Relay Controller Input/Down Pin
+Blue(x4) - Up Relay Controller Input/Up Pin
+Green(x4) - Down Relay Controller Input/Down Pin
 Red - VCC/5V
 Black - GND/Ground
 Yellow(x4) - 12V/Input of Relay
@@ -15,16 +12,16 @@ White(x4) - Grount/Output of Relay
 
 Buttons:
 ********
-Orange - 13/Up
-Brown - 12/Down
+Blue - 13/Up
+Green - 12/Down
 Red(x2) - 5V/10k Resistor/Button(Same Side as Pin)
 Black(x2) - Ground/Button(Opposite Side as Pin)
 
 MPU 6050 Board:
 ***************
-Red - VCC/3.3V
+Red - VCC/3.3
 Black - GND/Ground
-Brown - SCL/A5
+Yellow - SCL/A5
 Green - SDA/A4
 */
  
@@ -59,8 +56,8 @@ float rotX, rotY, rotZ;
 // #define OUTPUT_BINARY_ACCELGYRO
 
 // Declaring Buttons Pins:
-const int UP_BUTTON = 13;
-const int DOWN_BUTTON = 12;
+const int UP_BUTTON = 12;
+const int DOWN_BUTTON = 11;
 
 // Declaring Button States:
 int upButtonState = 0;
@@ -81,7 +78,8 @@ int frontLeft = 0;
 int backLeft = 0;
 int backRight = 0;
 int frontRight = 0;
-int legTolerance = 10;
+/************** Leg Tolerance ******************/
+int legTolerance = 0;
 
 void setup() {
   // join I2C bus (I2Cdev library doesn't do this automatically)
